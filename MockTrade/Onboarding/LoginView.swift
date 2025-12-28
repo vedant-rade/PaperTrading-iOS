@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isLoggedIn: Bool
+    let onLoginSuccess: () -> Void
+    
     @State private var username = ""
     @State private var password = ""
     
@@ -36,7 +37,9 @@ struct LoginView: View {
                         )
                 
                 Button {
-                    isLoggedIn = true
+                    if !username.isEmpty && !password.isEmpty {
+                        onLoginSuccess()
+                    }
                 } label: {
                     Text("Login")
                         .frame(height: 45)
@@ -46,16 +49,13 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
                 .padding(.vertical, 30)
-                .navigationDestination(for: String.self) { value in
-                    if value == "login" {
-                        HomeView()
-                    }
-                }
             }
             .padding()
     }
 }
 
 #Preview {
-    LoginView(isLoggedIn: .constant(false))
+    LoginView {
+        print("Login tapped")
+    }
 }

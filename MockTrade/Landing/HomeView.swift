@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-
+    
     @State private var selectedTab: TabBarItem = .watchlist
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                PinnedView(navTitle: selectedTab.title)
+                    .padding(.vertical)
 
                 tabContent()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.vertical)
 
                 CustomTabBar(selectedTab: $selectedTab)
             }
@@ -28,7 +31,7 @@ struct HomeView: View {
     private func tabContent() -> some View {
         switch selectedTab {
         case .watchlist:
-            WatchListView()
+            WatchListStack()
         case .orders:
             OrdersView()
         case .portfolio:

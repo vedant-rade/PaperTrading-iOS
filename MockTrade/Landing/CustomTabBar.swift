@@ -66,11 +66,11 @@ struct CustomTabBar: View {
         .padding(.bottom, 12)
         .background(
             Color(.systemBackground)
-                .shadow(color: .black.opacity(0.1), radius: 4, y: -2)
+                .shadow(color: .black.opacity(0.1), radius: 4, y: -5)
         )
     }
 }
 
-#Preview {
-    CustomTabBar(selectedTab: .constant(.watchlist))
-}
+//#Preview {
+//    CustomTabBar(selectedTab: .constant(.watchlist))
+//}
